@@ -3,12 +3,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 <body>
-    <h3>Hello World!</h3>
+	
+	<br/>
+	<br/>
+	{% if Zipcode %}
+		{{ Zipcode }}
+	{% endif %}
+
+	{% if api %}
+		{% if api == "Error.." %}
+			there was an error, please try later..
+		{% else %}
+			<div class="jumbotron {{ Category_color }}">
+			  <h1 class="display-4">{{ api.0.Category.Name }}</h1>
+			  <p class="lead">Current {{ api.0.ReportingArea }} Air Quality Index: {{ api.0.AQI }}</p>
+			 <p> {{ Category_description }} </p>
+			</div>
+			<br/>
+
+		{% endif %}
+
+	{% endif %}
+
 </body>
 </html>
 {% endblock %}
